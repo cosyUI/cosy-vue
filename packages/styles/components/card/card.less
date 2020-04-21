@@ -1,0 +1,77 @@
+@import "card-variable";
+
+@cardPrefixCls: ~"@{css-prefix}card";
+
+.@{cardPrefixCls} {
+  background-color: @card-fill;
+  & + & {
+    margin-top: @card-v-spacing;
+  }
+  & .@{css-prefix}card-title {
+    .@{css-prefix}list-item {
+      .@{css-prefix}list-line {
+        .@{css-prefix}list-content {
+          font-size: @card-title-font-size;
+          color: #333;
+        }
+        .@{css-prefix}list-extra {
+          font-size: @card-title-font-size;
+          color: #999;
+        }
+      }
+    }
+  }
+
+  &-header,
+  &-footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: @card-header-height;
+    padding: 0 @card-h-spacing;
+    color: #333;
+    font-size: @card-title-font-size;
+    &-line {
+      position: relative;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      align-self: stretch;
+      overflow: hidden;
+    }
+  }
+
+  &-header {
+    &-line {
+      &.@{css-prefix}hairline-bottom {
+        .hairline('bottom');
+      }
+      .@{cardPrefixCls}-header-content {
+        flex: 1;
+      }
+      .@{cardPrefixCls}-header-extra {
+        color: #999;
+      }
+    }
+  }
+
+  &-footer {
+    &-line {
+      &.@{css-prefix}hairline-top {
+        .hairline('top');
+      }
+      .@{cardPrefixCls}-footer-content {
+        flex: 1;
+      }
+    }
+  }
+
+  & &-body {
+    position: relative;
+    &.@{css-prefix}hairline-top {
+      .hairline('top');
+    }
+  }
+
+}

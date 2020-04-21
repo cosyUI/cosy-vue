@@ -1,0 +1,126 @@
+@import "dialog-variable";
+
+@dialogPrefixCls: ~"@{css-prefix}dialog";
+
+.@{dialogPrefixCls} {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-color: #fff;
+  width: 270px;
+  border-radius: 3px;
+  user-select: none;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transition: .3s;
+  z-index: 5000;
+  &-header {
+    padding: 20px 15px 0;
+  }
+  &-icon {
+    color: #4a4c5b;
+    line-height: 1;
+    text-align: center;
+    .@{css-prefix}iconfont {
+      font-size: 40px;
+    }
+  }
+  &-title {
+    font-size: 18px;
+    color: #333;
+    line-height: 1;
+    text-align: center;
+  }
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    text-align: center;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .@{css-prefix}iconfont {
+      font-size: 20px;
+      display: flex;
+    }
+  }
+  &-body {
+    position: relative;
+    padding: 15px 15px 20px;
+    font-size: 16px;
+    color: #888;
+    line-height: 1.5;
+  }
+  &-message {
+    color: @dialogMessageColor;
+    margin: 0;
+    text-align: center;
+    line-height: 20px;
+    font-size: @dialogMessageFontSize;
+  }
+  &-input {
+    input {
+      border: 1px solid @dialogBorderColor;
+      border-radius: 0px;
+      padding: 6px 8px;
+      width: 100%;
+      appearance: none;
+      outline: none;
+      font-size: 14px;
+      line-height: 1;
+      color: #666666;
+    }
+    input.invalid {
+      border-color: @dialogColorInvalid;
+      &:focus {
+        border-color: @dialogColorInvalid;
+      }
+    }
+    .@{css-prefix}error-msg {
+      display: block;
+      color: @dialogColorInvalid;
+      font-size: 12px;
+      min-height: 18px;
+      line-height: 18px;
+      margin-top: 2px;
+    }
+  }
+  &-message + &-input {
+    padding-top: 10px;
+  }
+
+  &-btns {
+    position: relative;
+    display: flex;
+    align-items: center;
+    &:before {
+      .setTopLine();
+    }
+  }
+  &-btn {
+    position: relative;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    background-color: #fff;
+    flex: 1;
+    margin: 0;
+    border: 0;
+  }
+  &-cancel {
+    &:after {
+      .setRightLine();
+    }
+  }
+  &-confirm {
+    color: @dialogConfirmColor;
+  }
+}

@@ -1,0 +1,71 @@
+@import "badge-variable";
+
+@badgePrefixCls: ~"@{css-prefix}badge";
+
+.@{badgePrefixCls} {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+  &-text {
+    position: absolute;
+    top: -@badge-height / 2;
+    min-width: @badge-height;
+    height: @badge-height;
+    padding: 0 @badge-h-spacing;
+    border-radius: @badge-height/2;
+    line-height: @badge-height;
+    text-align: center;
+    font-size: @badge-font-size;
+    color: @badge-color;
+    background-color: @badge-fill;
+    white-space: nowrap;
+    transform: translateX(-45%);
+    transform-origin: -10% center;
+    z-index: 10;
+    &&-square {
+      padding: 0 3 * @rpx;
+      border-radius: 2 * @rpx;
+    }
+    &&-hot {
+      background-color: #f96268;
+    }
+    &&-green {
+      background-color: #21B68A;
+    }
+    &&-yellow {
+      background-color: #F19736;
+    }
+    &&-ghost {
+      background-color: #FFFFFF;
+      color: @badge-fill;
+      border: 1 * @rpx solid @badge-fill;
+      line-height: @badge-height - 2 * @rpx;
+    }
+  }
+  &-dot {
+    position: absolute;
+    top: -@badge-dot-width/2;
+    width: @badge-dot-width;
+    height: @badge-dot-width;
+    border-radius: 100%;
+    background: @badge-fill;
+    transform: translateX(-50%);
+    transform-origin: 0 center;
+    z-index: 10;
+
+    &-large {
+      width: @badge-dot-width-lg;
+      height: @badge-dot-width-lg;
+    }
+  }
+
+  &-relative &-text,
+  &-relative &-dot {
+    position: relative;
+    top: auto;
+    display: block;
+    transform: translateX(0);
+  }
+}
+

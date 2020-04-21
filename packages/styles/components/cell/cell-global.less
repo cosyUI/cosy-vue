@@ -1,0 +1,144 @@
+@import "cell-variable";
+
+@cellPrefixCls: ~"@{css-prefix}cell";
+/*
+z-index:
+0: .cyui-swipe-btn
+1: .cyui-cell-swipe .cyui-cell-wrapper
+2: .cyui-cells、.cyui-cell、.cyui-cell-swipe的1px线
+*/
+
+.@{css-prefix}cells {
+  background-color: @cellsBg;
+  line-height: @cellLineHeight;
+  font-size: @cellFontSize;
+  overflow: hidden;
+  position: relative;
+  &:before {
+    .setTopLine();
+    z-index: 2;
+  }
+  &:after {
+    .setBottomLine();
+    z-index: 2;
+  }
+}
+
+.@{css-prefix}cells-title {
+  padding: 15px 15px 9px 15px;
+  font-size: 14px;
+  color: #888;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.@{css-prefix}cells-tips {
+  padding: 9px 15px 15px 15px;
+  font-size: 14px;
+  color: #888;
+}
+
+.@{cellPrefixCls} {
+  position: relative;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-height: 44px;
+  background-color: @cellBg;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: background-color 200ms;
+  align-items: center;
+
+  &:not(:first-child) {
+    .hairline('top');
+    &::before {
+      left: 15px !important;
+      z-index: 2;
+    }
+  }
+
+  &-primary {
+    align-items: flex-start;
+  }
+  &-bd {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+  }
+  &-ft {
+    text-align: right;
+    color: @cellTextColor;
+  }
+
+  /* 缩略图（thumb）*/
+  .@{cellPrefixCls}-thumb {
+    &:first-child {
+      margin-right: @h-spacing-lg;
+    }
+    &:last-child {
+      margin-left: @h-spacing-md;
+    }
+    img {
+      display: block;
+      width: @icon-size-md;
+      height: @icon-size-md;
+      vertical-align: middle;
+    }
+  }
+
+  /* list中间主内容*/
+  .@{cellPrefixCls}-content {
+    color: @color-text-base;
+    font-size: @font-size-heading;
+    line-height: @line-height-paragraph;
+    text-align: left;
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  /* list右补充内容*/
+  .@{cellPrefixCls}-extra {
+    flex-basis: 36%;
+    color: @color-text-caption;
+    font-size: @font-size-caption;
+    line-height: @line-height-paragraph;
+    text-align: right;
+    .ellipsis();
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .@{cellPrefixCls}-title {
+  }
+
+  /* 辅助性文字*/
+  .@{cellPrefixCls}-brief {
+    color: @color-text-caption;
+    font-size: @font-size-subhead;
+    line-height: @line-height-paragraph;
+    margin-top: 6px;
+  }
+
+  &-multiple {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .@{cellPrefixCls}-content {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .@{cellPrefixCls}-extra {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+
+
+

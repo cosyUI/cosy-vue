@@ -1,0 +1,230 @@
+@import "popup-variable";
+
+@popupPrefixCli: ~"@{css-prefix}popup";
+@overlayPrefixCli: ~"@{css-prefix}overlay";
+
+.@{popupPrefixCli} {
+  position: fixed;
+  display: flex;
+  background-color: @popup-fill;
+  z-index: @popup-zIndex;
+
+  & .@{overlayPrefixCli} {
+    position: absolute;
+    z-index: 1;
+  }
+
+  & &-wrapper {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 2;
+  }
+
+  &&-center {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &&-top {
+    top: 0;
+    right: 0;
+    left: 0;
+    max-height: 100%;
+
+    .@{popupPrefixCli}-wrapper {
+      width: 100%;
+    }
+  }
+
+  &&-right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+
+    .@{popupPrefixCli}-wrapper {
+      height: 100%;
+    }
+  }
+
+  &&-bottom {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 100%;
+
+    .@{popupPrefixCli}-wrapper {
+      width: 100%;
+    }
+  }
+
+  &&-left {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+
+    .@{popupPrefixCli}-wrapper {
+      height: 100%;
+    }
+  }
+
+  &&-slide {
+    &-top {
+      &-enter-active {
+        animation: slideInDown @animation-duration-base both ease;
+      }
+
+      &-leave-active {
+        animation: slideOutUp @animation-duration-base both ease;
+      }
+    }
+
+    &-bottom {
+      &-enter-active {
+        animation: slideInUp @animation-duration-base both ease;
+      }
+
+      &-leave-active {
+        animation: slideOutDown @animation-duration-base both ease;
+      }
+    }
+
+    &-left {
+      &-enter-active {
+        animation: slideInLeft @animation-duration-base both ease;
+      }
+
+      &-leave-active {
+        animation: slideOutLeft @animation-duration-base both ease;
+      }
+    }
+
+    &-right {
+      &-enter-active {
+        animation: slideInRight @animation-duration-base both ease;
+      }
+
+      &-leave-active {
+        animation: slideOutRight @animation-duration-base both ease;
+      }
+    }
+  }
+
+  &&-fade {
+    &-enter-active {
+      animation: fadeIn @animation-duration-base;
+    }
+
+    &-leave-active {
+      animation: fadeOut @animation-duration-base;
+    }
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

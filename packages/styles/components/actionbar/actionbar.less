@@ -1,0 +1,97 @@
+@import "actionbar-variable";
+
+@footbarPrefixCls: ~"@{css-prefix}actionbar";
+
+.@{footbarPrefixCls} {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  z-index: @footbar-zindex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: @footbar-height;
+  background-color: @footbar-fill;
+
+  & &-item {
+    flex: 1;
+    display: block;
+    text-align: center;
+  }
+  & .@{css-prefix}tabbar {
+    flex: none;
+    display: flex;
+    width: auto;
+    height: inherit;
+    background-color: transparent;
+    z-index: 0;
+    .hairline-remove('top');
+
+    & .@{css-prefix}tabbar-item {
+      width: @footbar-tabbar-width;
+      color: @footbar-tabbar-color;
+    }
+  }
+
+  & &-checkbox {
+    flex: none;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+    width: auto;
+    padding-left: @footbar-checkbox-h-spacing;
+    padding-right: @footbar-checkbox-h-spacing;
+    .@{css-prefix}checkbox,
+    .@{css-prefix}checkbox-label {
+      display: block;
+    }
+    &-vertical {
+      flex-direction: column;
+      .@{css-prefix}checkbox + .@{css-prefix}checkbox-label {
+        margin-left: 0;
+        font-size: @footbar-checkbox-font-size-v;
+      }
+    }
+  }
+
+  & &-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    & .@{css-prefix}btn {
+      flex: 1;
+      display: block;
+      height: @footbar-btn-height;
+      min-width: @footbar-btn-width-sm;
+      margin: 0;
+      font-size: @footbar-btn-font-size;
+      line-height: @footbar-btn-height;
+      border-width: 0;
+    }
+  }
+  & &-info {
+    text-align: @footbar-info-text-align;
+    padding-left: @footbar-info-h-spacing;
+    & [class*=-footbar-total],
+    & [class*=-footbar-tip] {
+      display: block;
+      font-size: @footbar-info-font-size;
+      color: @footbar-info-color;
+      line-height: 1.2;
+    }
+    [class*=-footbar-total] + [class*=-footbar-tip] {
+      margin-top: 5 * @rpx;
+    }
+    & [class*=-footbar-total] {
+      font-size: @footbar-info-total-font-size;
+      font-weight: bold;
+      color: @footbar-info-total-color;
+      em {
+        color: @brand-primary;
+      }
+    }
+  }
+}

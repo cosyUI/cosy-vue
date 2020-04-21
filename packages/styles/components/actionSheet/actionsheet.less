@@ -1,0 +1,73 @@
+@import "actionsheet-variable";
+
+@actionsheetPrefixCls: ~"@{css-prefix}actionsheet";
+
+.@{actionsheetPrefixCls} {
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  bottom: 0;
+  background-color: @actionsheet-fill;
+  transform: translate3d(-50%, 100%, 0);
+  backface-visibility: hidden; //隐藏被旋转的元素的背面
+  transition: transform .3s ease-out;
+  z-index: @actionsheet-zindex;
+}
+
+.@{actionsheetPrefixCls}-title {
+  position: relative;
+  height: @actionsheet-item-height;
+  padding: 0 20px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: @actionsheet-title-font-size;
+  color: @actionsheet-title-color;
+  background-color: @actionsheet-item-fill;
+  &:before {
+    .setBottomLine();
+  }
+  &&-text {
+    .ellipsisLn(2);
+  }
+}
+
+.@{actionsheetPrefixCls}-menu {
+  background-color: @actionsheet-item-fill;
+}
+
+.@{actionsheetPrefixCls}-action {
+  margin-top: 6px;
+  background-color: @actionsheet-item-fill;
+}
+
+.@{actionsheetPrefixCls}-item {
+  position: relative;
+  height: @actionsheet-item-height;
+  line-height: @actionsheet-item-height;
+  font-size: @actionsheet-item-font-size;
+  text-align: center;
+  color: @actionsheet-item-color;
+  &:before {
+    .setTopLine();
+  }
+  &:first-child {
+    &:before {
+      display: none;
+    }
+  }
+  &:active,
+  &.is-selected {
+    background-color: @actionsheet-active-fill;
+  }
+  &&-delete {
+    color: #f4333c;
+  }
+}
+
+//actionSheet aniamtion
+.@{actionsheetPrefixCls}-toggle {
+  transform: translate3d(-50%, 0, 0);
+}

@@ -1,0 +1,93 @@
+@import "radio-variable";
+
+@listPrefixCls: ~"@{css-prefix}list";
+@radioPrefixCls: ~"@{css-prefix}radio";
+
+.@{radioPrefixCls}-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.@{radioPrefixCls} {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+  &-core {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: #fff;
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow: hidden;
+    &::after {
+      content: " ";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform .2s;
+      box-sizing: border-box;
+    }
+  }
+
+  &-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+    border: 0 none;
+    appearance: none;
+    &:checked {
+      & + .@{radioPrefixCls}-core {
+        border-color: @brand-primary;
+        background-color: @brand-primary;
+
+        &::after {
+          background-color: #fff;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &.@{radioPrefixCls}-checked {
+    .@{radioPrefixCls}-core {
+      border-color: @brand-primary;
+      background-color: @brand-primary;
+
+      &::after {
+        background-color: #fff;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &.@{radioPrefixCls}-disabled {
+    .@{radioPrefixCls}-core {
+      background-color: #d9d9d9;
+      border-color: #ccc;
+    }
+  }
+}
+
+.@{radioPrefixCls}-label {
+  display: inline-block;
+  font-size: 15px;
+  color: #000;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.@{radioPrefixCls} + .@{radioPrefixCls}-label {
+  margin-left: 5px;
+}

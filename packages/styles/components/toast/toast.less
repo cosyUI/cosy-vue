@@ -1,0 +1,51 @@
+@import "toast-variable";
+
+@toastPrefixCls: ~"@{css-prefix}toast";
+
+.@{toastPrefixCls} {
+  position: fixed;
+  max-width: 50%;
+  border-radius: 3px;
+  background-color: @toast-fill;
+  color: @toast-color;
+  text-align: center;
+  line-height: 1.5;
+  font-size: @toast-font-size;
+  padding: @toast-padding;
+  z-index: @toast-zindex;
+  transition: opacity .3s linear;
+  & &-icon {
+    display: block;
+    font-size: @toast-iconfont-font-size;
+    line-height: 1;
+  }
+  & &-text {
+    display: block;
+  }
+
+  &.@{toastPrefixCls}-long {
+    width: 80%;
+  }
+  &.@{toastPrefixCls}-icon {
+    border-radius: 5px;
+    padding: @toast-iconfont-padding;
+    .@{toastPrefixCls}-text {
+      margin-top: 5px;
+    }
+  }
+  &.@{toastPrefixCls}-top {
+    top: @toast-top;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  &.@{toastPrefixCls}-middle {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.@{toastPrefixCls}-bottom {
+    bottom: @toast-bottom;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}

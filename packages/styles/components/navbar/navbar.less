@@ -1,0 +1,95 @@
+@import "navbar-variable";
+
+@navbarPrefixCls: ~"@{css-prefix}navbar";
+@badgePrefixCls: ~"@{css-prefix}badge";
+
+.@{navbarPrefixCls} {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: @navbar-height;
+  background-color: @navbar-fill;
+  user-select: none;
+
+  &-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    height: inherit;
+    line-height: @navbar-height;
+    font-size: @navbar-item-font-size;
+    text-align: center;
+    color: @navbar-item-color;
+    box-sizing: border-box;
+
+    .@{navbarPrefixCls}-icon {
+      display: block;
+    }
+
+    .@{navbarPrefixCls}-label {
+      display: block;
+      font-size: @navbar-item-font-size;
+      line-height: @line-height-paragraph;
+
+      &.@{badgePrefixCls} {
+        .@{badgePrefixCls}-text,
+        .@{badgePrefixCls}-dot {
+          top: 50%;
+          transform: translate(0, -50%);
+          margin-top: -@navbar-item-font-size/2;
+        }
+      }
+    }
+
+    &.@{navbarPrefixCls}-active {
+      color: @navbar-item-color-tap;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: @navbar-item-color-tap;
+        z-index: 1;
+      }
+    }
+
+    &.@{navbarPrefixCls}-disabled {
+      color: @color-text-disabled;
+    }
+  }
+
+  &-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 80px;
+    height: 2px;
+    background-color: #FF9900;
+    text-align: center;
+    transform: translateX(0);
+    transition-duration: 0.2s;
+    z-index: 2;
+  }
+
+  &&-scollable {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .@{navbarPrefixCls}-item {
+      flex: none;
+      padding: 0 @navbar-item-h-spacing;
+    }
+  }
+}
