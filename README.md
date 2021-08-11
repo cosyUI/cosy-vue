@@ -1,6 +1,6 @@
 # cosy-vue
 
-## Project setup
+## 安装依赖
 ```
 yarn install
 ```
